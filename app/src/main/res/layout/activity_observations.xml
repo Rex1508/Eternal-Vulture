@@ -18,7 +18,7 @@
         app:layout_constraintVertical_bias="0.032" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/CB_High_Water"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="High Water"
@@ -26,7 +26,7 @@
         tools:layout_editor_absoluteY="52dp" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/CB_Low_Water"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Low Water"
@@ -34,7 +34,7 @@
         tools:layout_editor_absoluteY="102dp" />
 
     <CheckBox
-        android:id="@+id/checkBox3"
+        android:id="@+id/CB_Debris"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Derbis"
@@ -56,7 +56,7 @@
         tools:layout_editor_absoluteY="222dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/BTN_Take_A_Picture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Take a picture"
@@ -64,7 +64,7 @@
         tools:layout_editor_absoluteY="52dp" />
 
     <CheckBox
-        android:id="@+id/checkBox4"
+        android:id="@+id/CB_Sample1"
         android:layout_width="166dp"
         android:layout_height="wrap_content"
         android:text="Sample 1 Labeled?"
@@ -72,7 +72,7 @@
         tools:layout_editor_absoluteY="348dp" />
 
     <CheckBox
-        android:id="@+id/checkBox5"
+        android:id="@+id/CB_Sample2"
         android:layout_width="165dp"
         android:layout_height="wrap_content"
         android:text="Sample 2 Labeled?"
@@ -80,7 +80,7 @@
         tools:layout_editor_absoluteY="395dp" />
 
     <CheckBox
-        android:id="@+id/checkBox6"
+        android:id="@+id/CB_Sample3"
         android:layout_width="164dp"
         android:layout_height="wrap_content"
         android:text="Sample 3 Labeled? "

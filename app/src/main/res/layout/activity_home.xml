@@ -18,7 +18,7 @@
         app:layout_constraintVertical_bias="0.033" />
 
     <Button
-        android:id="@+id/Btn_Collect_Samples"
+        android:id="@+id/BTN_Collect_Samples"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Collect Sample"
@@ -26,7 +26,7 @@
         tools:layout_editor_absoluteY="63dp" />
 
     <Button
-        android:id="@+id/Btn_Review_Samples"
+        android:id="@+id/BTN_Review_Samples"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Review Samples"
