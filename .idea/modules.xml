@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/EternalVulture.iml" filepath="$PROJECT_DIR$/EternalVulture.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Eternal-Vulture.iml" filepath="$PROJECT_DIR$/Eternal-Vulture.iml" />
+      <module fileurl="file://C:\Users\Ian\AndroidStudioProjects\ASD\Eternal-Vulture\EternalVulture.iml" filepath="C:\Users\Ian\AndroidStudioProjects\ASD\Eternal-Vulture\EternalVulture.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Ian\AndroidStudioProjects\ASD\Eternal-Vulture\app\app.iml" filepath="C:\Users\Ian\AndroidStudioProjects\ASD\Eternal-Vulture\app\app.iml" />
     </modules>
   </component>
 </project>

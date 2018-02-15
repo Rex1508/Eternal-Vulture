@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.coe.jlgarcia.eternalvulture.InitialDataInfo">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Collector"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <EditText
+        android:id="@+id/collector_name"
+        android:layout_width="183dp"
+        android:layout_height="43dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="45dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date and Location"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="117dp" />
+
+    <EditText
+        android:id="@+id/collection_date"
+        android:layout_width="162dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint="Date"
+        android:inputType="date"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="151dp" />
+
+    <EditText
+        android:id="@+id/collection_time"
+        android:layout_width="133dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint="Time"
+        android:inputType="time"
+        tools:layout_editor_absoluteX="192dp"
+        tools:layout_editor_absoluteY="151dp" />
+
+    <EditText
+        android:id="@+id/collection_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Location"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="213dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Equiptment Used"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="294dp" />
+
+    <CheckBox
+        android:id="@+id/YSI556"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="YSI 556 MPS"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="320dp" />
+
+    <CheckBox
+        android:id="@+id/YSI55"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="YSI 55"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="359dp" />
+
+    <CheckBox
+        android:id="@+id/AccAP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Accumet AP85"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="404dp" />
+
+    <CheckBox
+        android:id="@+id/HachP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hach 2100 P"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="446dp" />
+
+    <CheckBox
+        android:id="@+id/YSIPro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="YSI ProPlus"
+        tools:layout_editor_absoluteX="178dp"
+        tools:layout_editor_absoluteY="320dp" />
+
+    <CheckBox
+        android:id="@+id/HachQ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hach 2100 Q"
+        tools:layout_editor_absoluteX="178dp"
+        tools:layout_editor_absoluteY="359dp" />
+
+    <CheckBox
+        android:id="@+id/Acc61"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Accumet 61"
+        tools:layout_editor_absoluteX="178dp"
+        tools:layout_editor_absoluteY="404dp" />
+
+    <Button
+        android:id="@+id/btn_autofill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Auto-Fill"
+        tools:layout_editor_absoluteX="256dp"
+        tools:layout_editor_absoluteY="213dp" />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NEXT"
+        tools:layout_editor_absoluteX="278dp"
+        tools:layout_editor_absoluteY="445dp" />
+
+</android.support.constraint.ConstraintLayout>
