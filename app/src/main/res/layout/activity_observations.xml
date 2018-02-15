@@ -9,10 +9,82 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="Observations:"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.032" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="High Water"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="52dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Low Water"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="102dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Derbis"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="158dp" />
+
+    <Space
+        android:layout_width="104dp"
+        android:layout_height="72dp"
+        tools:layout_editor_absoluteX="524dp"
+        tools:layout_editor_absoluteY="267dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:text="Other Observations"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="222dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Take a picture"
+        tools:layout_editor_absoluteX="235dp"
+        tools:layout_editor_absoluteY="52dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox4"
+        android:layout_width="166dp"
+        android:layout_height="wrap_content"
+        android:text="Sample 1 Labeled?"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="348dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox5"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:text="Sample 2 Labeled?"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="395dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox6"
+        android:layout_width="164dp"
+        android:layout_height="wrap_content"
+        android:text="Sample 3 Labeled? "
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="449dp" />
 
 </android.support.constraint.ConstraintLayout>
