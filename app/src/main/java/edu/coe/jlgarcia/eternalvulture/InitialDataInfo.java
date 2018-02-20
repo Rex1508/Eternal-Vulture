@@ -1,5 +1,6 @@
 package edu.coe.jlgarcia.eternalvulture;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,12 +11,26 @@ import android.widget.CheckBox;
 
 
 
-public class InitialDataInfo extends AppCompatActivity {
+public class InitialDataInfo extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial_data_info);
+
+
+        idControls();
+
+
+    }
+
+
+
+
+
+
+    private void idControls(){
+
 
         Button btn_autofill;
         Button btn_next;
@@ -33,7 +48,9 @@ public class InitialDataInfo extends AppCompatActivity {
 
 
         btn_autofill = (Button) this.findViewById(R.id.btn_autofill);
+        btn_autofill.setOnClickListener(this);
         btn_next = (Button) this.findViewById(R.id.btn_next);
+        btn_next.setOnClickListener(this);
         collector_name = (EditText) this.findViewById(R.id.collector_name);
         collection_date = (EditText) this.findViewById(R.id.collection_date);
         collection_time = (EditText) this.findViewById(R.id.collection_time);
@@ -48,6 +65,22 @@ public class InitialDataInfo extends AppCompatActivity {
 
 
 
+    }
+
+
+
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.btn_next:
+                Intent i = new Intent(InitialDataInfo.this, Measurements.class);
+
+                startActivity(i);
+                break;
+            case R.id.btn_autofill:
+                // Autofill actions //
+        }
 
     }
 
