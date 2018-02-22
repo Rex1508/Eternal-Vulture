@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Directly In Stream"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="48dp" />
+        tools:layout_editor_absoluteY="372dp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -21,15 +21,15 @@
         android:text="Measurment Method"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="337dp" />
 
     <RadioButton
         android:id="@+id/radio-bucket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="From Bucket"
-        tools:layout_editor_absoluteX="194dp"
-        tools:layout_editor_absoluteY="48dp" />
+        tools:layout_editor_absoluteX="211dp"
+        tools:layout_editor_absoluteY="372dp" />
 
     <TextView
         android:id="@+id/textView5"
@@ -38,7 +38,7 @@
         android:text="Measurments"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="106dp" />
+        tools:layout_editor_absoluteY="16dp" />
 
     <TextView
         android:id="@+id/textView6"
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:text="Dissolved Oxygen"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="158dp" />
+        tools:layout_editor_absoluteY="52dp" />
 
     <EditText
         android:id="@+id/oxygen"
@@ -55,8 +55,9 @@
         android:ems="10"
         android:hint="mg/L"
         android:inputType="textPersonName"
+        android:textAlignment="center"
         tools:layout_editor_absoluteX="126dp"
-        tools:layout_editor_absoluteY="144dp" />
+        tools:layout_editor_absoluteY="35dp" />
 
     <EditText
         android:id="@+id/temp"
@@ -65,8 +66,9 @@
         android:ems="10"
         android:hint="°C"
         android:inputType="textPersonName"
+        android:textAlignment="center"
         tools:layout_editor_absoluteX="126dp"
-        tools:layout_editor_absoluteY="199dp" />
+        tools:layout_editor_absoluteY="91dp" />
 
     <EditText
         android:id="@+id/ph"
@@ -74,8 +76,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textAlignment="center"
         tools:layout_editor_absoluteX="126dp"
-        tools:layout_editor_absoluteY="261dp" />
+        tools:layout_editor_absoluteY="144dp" />
 
     <EditText
         android:id="@+id/conductance"
@@ -84,8 +87,9 @@
         android:ems="10"
         android:hint="μS"
         android:inputType="textPersonName"
+        android:textAlignment="center"
         tools:layout_editor_absoluteX="126dp"
-        tools:layout_editor_absoluteY="325dp" />
+        tools:layout_editor_absoluteY="205dp" />
 
     <EditText
         android:id="@+id/turbidity"
@@ -94,8 +98,9 @@
         android:ems="10"
         android:hint="NTU"
         android:inputType="textPersonName"
+        android:textAlignment="center"
         tools:layout_editor_absoluteX="126dp"
-        tools:layout_editor_absoluteY="396dp" />
+        tools:layout_editor_absoluteY="265dp" />
 
     <TextView
         android:id="@+id/textView7"
@@ -103,15 +108,15 @@
         android:layout_height="wrap_content"
         android:text="Water Temp."
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="217dp" />
+        tools:layout_editor_absoluteY="106dp" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="pH"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="279dp" />
+        tools:layout_editor_absoluteX="54dp"
+        tools:layout_editor_absoluteY="164dp" />
 
     <TextView
         android:id="@+id/textView9"
@@ -119,15 +124,15 @@
         android:layout_height="wrap_content"
         android:text="Sp. Conductance"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="340dp" />
+        tools:layout_editor_absoluteY="217dp" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Turbidity"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="406dp" />
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="291dp" />
 
     <Button
         android:id="@+id/button"
