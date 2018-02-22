@@ -3,14 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Eternal-Vulture.iml" filepath="$PROJECT_DIR$/Eternal-Vulture.iml" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <module fileurl="file://C:\Users\Ian\AndroidStudioProjects\ASD\Eternal-Vulture\EternalVulture.iml" filepath="C:\Users\Ian\AndroidStudioProjects\ASD\Eternal-Vulture\EternalVulture.iml" />
-=======
-      <module fileurl="file://C:\Users\rex15_000\Documents\Eternal-Vulture\EternalVulture.iml" filepath="C:\Users\rex15_000\Documents\Eternal-Vulture\EternalVulture.iml" />
->>>>>>> 8eff7cd5b28596a266ada837d45a9f7488dd1b6f
-=======
->>>>>>> refs/remotes/origin/IanLayouts
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
