@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+<<<<<<< HEAD
 import android.widget.Button;
 
 public class Home extends AppCompatActivity implements View.OnClickListener{
 
     Button collect_sample = (Button) this.findViewById(R.id.BTN_Collect_Samples);
+=======
+>>>>>>> origin/master
 
 
     @Override
@@ -25,5 +28,18 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         Intent i = new Intent(Home.this, InitialDataInfo.class);
 
         startActivity(i);
+    }
+
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_Collect_Samples:
+                Intent i = new Intent(Home.this, InitialDataInfo.class);
+                startActivity(i);
+                break;
+            case R.id.btn_Review_Samples:
+                // open review page //
+
+        }
+
     }
 }
