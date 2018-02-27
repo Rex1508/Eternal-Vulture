@@ -17,6 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".InitialDataInfo"></activity>
+        <activity android:name=".Measurements"></activity>
+        <activity android:name=".Observations"></activity>
+        <activity android:name=".Review"></activity>
     </application>
 
 </manifest>

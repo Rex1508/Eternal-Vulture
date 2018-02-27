@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="edu.coe.jlgarcia.eternalvulture.InitialDataInfo">
 
     <TextView
@@ -35,35 +36,59 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="117dp" />
 
-    <EditText
-        android:id="@+id/collection_date"
-        android:layout_width="162dp"
-        android:layout_height="45dp"
-        android:ems="10"
-        android:hint="Date"
-        android:inputType="date"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="151dp" />
-
-    <EditText
-        android:id="@+id/collection_time"
-        android:layout_width="133dp"
-        android:layout_height="45dp"
-        android:ems="10"
-        android:hint="Time"
-        android:inputType="time"
-        tools:layout_editor_absoluteX="192dp"
-        tools:layout_editor_absoluteY="151dp" />
-
-    <EditText
-        android:id="@+id/collection_location"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Location"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="213dp" />
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/collection_time"
+            android:layout_width="133dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Time"
+            android:inputType="time"
+            tools:layout_editor_absoluteX="192dp"
+            tools:layout_editor_absoluteY="151dp" />
+
+        <EditText
+            android:id="@+id/collection_date"
+            android:layout_width="162dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Date"
+            android:inputType="date"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="151dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/collection_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Location"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="213dp" />
+
+        <Button
+            android:id="@+id/btn_autofill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Auto-Fill"
+            tools:layout_editor_absoluteX="256dp"
+            tools:layout_editor_absoluteY="213dp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView3"
@@ -74,76 +99,89 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="294dp" />
 
-    <CheckBox
-        android:id="@+id/YSI556"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="YSI 556 MPS"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="320dp" />
+        android:orientation="horizontal">
 
-    <CheckBox
-        android:id="@+id/YSI55"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="YSI 55"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="359dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <CheckBox
-        android:id="@+id/AccAP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Accumet AP85"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="404dp" />
+            <CheckBox
+                android:id="@+id/YSIPro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="YSI ProPlus"
+                tools:layout_editor_absoluteX="178dp"
+                tools:layout_editor_absoluteY="320dp" />
 
-    <CheckBox
-        android:id="@+id/HachP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hach 2100 P"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="446dp" />
+            <CheckBox
+                android:id="@+id/HachQ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hach 2100 Q"
+                tools:layout_editor_absoluteX="178dp"
+                tools:layout_editor_absoluteY="359dp" />
 
-    <CheckBox
-        android:id="@+id/YSIPro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="YSI ProPlus"
-        tools:layout_editor_absoluteX="178dp"
-        tools:layout_editor_absoluteY="320dp" />
+            <CheckBox
+                android:id="@+id/Acc61"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Accumet 61"
+                tools:layout_editor_absoluteX="178dp"
+                tools:layout_editor_absoluteY="404dp" />
+        </LinearLayout>
 
-    <CheckBox
-        android:id="@+id/HachQ"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hach 2100 Q"
-        tools:layout_editor_absoluteX="178dp"
-        tools:layout_editor_absoluteY="359dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <CheckBox
-        android:id="@+id/Acc61"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Accumet 61"
-        tools:layout_editor_absoluteX="178dp"
-        tools:layout_editor_absoluteY="404dp" />
+            <CheckBox
+                android:id="@+id/YSI556"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="YSI 556 MPS"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="320dp" />
 
-    <Button
-        android:id="@+id/btn_autofill"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Auto-Fill"
-        tools:layout_editor_absoluteX="256dp"
-        tools:layout_editor_absoluteY="213dp" />
+            <CheckBox
+                android:id="@+id/AccAP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Accumet AP85"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="404dp" />
+
+            <CheckBox
+                android:id="@+id/HachP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hach 2100 P"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="446dp" />
+
+            <CheckBox
+                android:id="@+id/YSI55"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="YSI 55"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="359dp" />
+        </LinearLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView"
         android:text="NEXT"
         tools:layout_editor_absoluteX="278dp"
         tools:layout_editor_absoluteY="445dp" />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
