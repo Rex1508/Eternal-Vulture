@@ -1,6 +1,7 @@
 package edu.coe.jlgarcia.eternalvulture;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +34,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_Collect_Samples:
+
+                SharedPreferences s;
+                s = getSharedPreferences("DataFile",0);
+                SharedPreferences.Editor e = s.edit();
+
+                e.clear();
+                e.commit();
+
                 Intent i = new Intent(Home.this, InitialDataInfo.class);
                 startActivity(i);
                 break;

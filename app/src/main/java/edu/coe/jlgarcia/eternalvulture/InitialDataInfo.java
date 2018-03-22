@@ -2,6 +2,7 @@ package edu.coe.jlgarcia.eternalvulture;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -71,8 +72,9 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
             case R.id.btn_next:
 
                 if (valid()) {
-                    Intent i = new Intent(InitialDataInfo.this, Measurements.class);
+                    saveData();
 
+                    Intent i = new Intent(InitialDataInfo.this, Measurements.class);
                     startActivity(i);
                 }
 
@@ -160,13 +162,28 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
 
     }
 
-    /*
+    private void saveData(){
+        SharedPreferences s;
+        s = getSharedPreferences("DataFile",0);
+        SharedPreferences.Editor e = s.edit();
 
-    private Runnable update = new Runnable() {
-        @Override
-        public void run() {refreshHandler.postDelayed(update, 100);}
-    };
+        e.putString("collector_name",collector_name.getText().toString());
+        e.putString("collection_date",collection_date.getText().toString());
+        e.putString("collection_time",collection_time.getText().toString());
+        e.putString("collection_location",collection_location.getText().toString());
 
-    */
+        e.putBoolean("YSI556",YSI556.isChecked());
+        e.putBoolean("YSI55",YSI55.isChecked());
+        e.putBoolean("AccAP",AccAP.isChecked());
+        e.putBoolean("HachP",HachP.isChecked());
+        e.putBoolean("YSIPro",YSIPro.isChecked());
+        e.putBoolean("HachQ",HachQ.isChecked());
+        e.putBoolean("Acc61",Acc61.isChecked());
+
+        e.commit();
+
+    }
+
+
 
 }
