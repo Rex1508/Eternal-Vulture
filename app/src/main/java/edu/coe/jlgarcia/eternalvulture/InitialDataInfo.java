@@ -75,6 +75,8 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
                     saveData();
 
                     Intent i = new Intent(InitialDataInfo.this, Measurements.class);
+
+                    //i.putExtra("Initial_Info", /*string with csvs to pass on*/);
                     startActivity(i);
                 }
 
@@ -120,7 +122,7 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
 
 
     private void getLocation(){
-        collection_location.setText("Coe College");
+        collection_location.setText("Coe College");//need to build this up
 
     }
 
@@ -180,7 +182,7 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
         e.putBoolean("HachQ",HachQ.isChecked());
         e.putBoolean("Acc61",Acc61.isChecked());
 
-        e.commit();
+        e.apply();
 
     }
 
