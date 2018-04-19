@@ -45,6 +45,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
     Button collect_sample;
     Button send_data;
+    Button review_sample;
 
     TextView home;
 
@@ -70,6 +71,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         send_data = (Button) this.findViewById(R.id.btn_Send_Data);
         send_data.setOnClickListener(this);
 
+        review_sample = (Button)this.findViewById(R.id.btn_Review_Samples);
+        review_sample.setOnClickListener(this);
+
         home = this.findViewById(R.id.txt_home);
 
     }
@@ -79,15 +83,15 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         switch (v.getId()) {
             case R.id.btn_Collect_Samples:
 
-                SharedPreferences s;
+                SharedPreferences s; //opens up the file in the SharedPreferences so we can edit the info in it
                 s = getSharedPreferences("DataFile",0);
                 SharedPreferences.Editor e = s.edit();
 
                 e.clear();
                 e.commit();
 
-                Intent i = new Intent(Home.this, InitialDataInfo.class);
-                startActivity(i);
+                Intent i = new Intent(Home.this, InitialDataInfo.class); // prepare the next activity to be opened
+                startActivity(i); //start next activity
                 break;
             case R.id.btn_Send_Data:
                 int result = getData();
@@ -95,6 +99,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                 if (result!=0){error(result);}
 
                 break;
+            case R.id.btn_Review_Samples:
+
+                Intent j = new Intent(Home.this, Review.class); // prep the review page to be opened
+                startActivity(j); //start next activity. Do I need to worry about closing this activity?????
+
 
         }
 
