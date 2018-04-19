@@ -50,6 +50,14 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="222dp" />
 
+    <EditText
+        android:id="@+id/edt_comments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Comments"
+        android:inputType="textPersonName" />
+
     <Button
         android:id="@+id/btn_Finish"
         android:layout_width="wrap_content"
@@ -81,15 +89,5 @@
         android:text="Sample 3 Labeled? "
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="449dp" />
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="267dp" />
 
 </LinearLayout>

@@ -1,9 +1,11 @@
 package edu.coe.jlgarcia.eternalvulture;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,8 +15,14 @@ import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.CheckBox;
 import android.support.v7.app.AlertDialog;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 
 
 public class InitialDataInfo extends AppCompatActivity implements View.OnClickListener{
@@ -34,6 +42,7 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
     CheckBox HachQ;
     CheckBox Acc61;
     //private Handler refreshHandler = new Handler();
+
 
 
     @Override
@@ -73,6 +82,7 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
 
                 if (valid()) {
                     saveData();
+                    //saveData1();
 
                     Intent i = new Intent(InitialDataInfo.this, Measurements.class);
 
@@ -86,7 +96,7 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
                 // Autofill actions //
 
                 getTime();
-                getLocation();
+                //getLocation();
 
         }
 
@@ -109,7 +119,8 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
     private void getTime(){
         Calendar c = Calendar.getInstance();
 
-        String date = c.get(Calendar.MONTH) + "-"
+        // For some god-forsaken reason months start at 0 in here
+        String date = (c.get(Calendar.MONTH)+1) + "-"
                 + c.get(Calendar.DAY_OF_MONTH)
                 + "-" + c.get(Calendar.YEAR);
 
@@ -120,11 +131,12 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
         collection_time.setText(time);
     }
 
-
+/* We gave up on auto-filling this field
     private void getLocation(){
         collection_location.setText("Coe College");//need to build this up
 
     }
+*/
 
 
     private void error(){
@@ -187,5 +199,43 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
     }
 
 
+
+
+/*
+    public void saveData1() {
+
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+
+        File file = new File(baseDir+"/"+fileName);
+
+        SharedPreferences s;
+        s = getSharedPreferences("DataFile",0);
+
+
+
+        FileOutputStream fos = null;
+        try{
+            fos = new FileOutputStream(file);
+        }
+        catch (FileNotFoundException e) {e.printStackTrace();}
+        try {
+            try {
+
+                fos.write(String.valueOf("hello").getBytes());
+
+
+                fos.write("\n".getBytes());
+            }
+            catch (IOException e) {e.printStackTrace();}
+        }
+        finally {
+            try {
+                fos.close();
+            }
+            catch (IOException e) {e.printStackTrace();}
+        }
+    }
+
+*/
 
 }
