@@ -28,7 +28,7 @@ public class Review extends AppCompatActivity {
 
         idControls();
 
-        //set this generation inside a for loop based on number of samples
+        //Outline to systematically generate the saved entries
         //1. Check the file to see how many entries are in it
         //2. For loop capped at that many entries
             //a. make a button name and display text based on the sample number (take from the for loop counter)
@@ -36,7 +36,7 @@ public class Review extends AppCompatActivity {
             //Button buttonView = new Button(this);
             //buttonView.setText("Button");
 
-            //c. assign on click listener \\\\\\\\\\\\\\How do I set the behaivior for this?????
+            //c. assign on click listener \\\\\\\\\\\\\\How do I set the behavior for this?????
             //buttonView.setOnClickListener(mThisButtonListener);
             //d. actually add the button on the layout ----- how do I space these out so they don't stack???
             //layout.addView(buttonView, p);
@@ -53,7 +53,7 @@ public class Review extends AppCompatActivity {
     public void idControls(){
 
         Back = (Button) this.findViewById(R.id.btn_Back);
-        //Back.setOnClickListener(this); // for some reason this broken, but I don't really know what it does anyway... I should ask ian
+        //Back.setOnClickListener(); // for some reason this broken, but I don't really know what it does anyway... I should ask ian
 
     }
 
@@ -68,12 +68,6 @@ public class Review extends AppCompatActivity {
         }
 
     }
-
-
-
-
-
-
 
 
     private void ShowFile(){
