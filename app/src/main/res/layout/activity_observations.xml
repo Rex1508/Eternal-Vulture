@@ -66,28 +66,4 @@
         tools:layout_editor_absoluteX="450dp"
         tools:layout_editor_absoluteY="502dp" />
 
-    <CheckBox
-        android:id="@+id/CB_Sample1"
-        android:layout_width="166dp"
-        android:layout_height="wrap_content"
-        android:text="Sample 1 Labeled?"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="348dp" />
-
-    <CheckBox
-        android:id="@+id/CB_Sample2"
-        android:layout_width="165dp"
-        android:layout_height="wrap_content"
-        android:text="Sample 2 Labeled?"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="395dp" />
-
-    <CheckBox
-        android:id="@+id/CB_Sample3"
-        android:layout_width="164dp"
-        android:layout_height="wrap_content"
-        android:text="Sample 3 Labeled? "
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="449dp" />
-
 </LinearLayout>
