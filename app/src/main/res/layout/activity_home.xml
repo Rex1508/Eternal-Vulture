@@ -27,8 +27,9 @@
         android:id="@+id/btn_Collect_Samples"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_Review_Samples"
+        android:layout_alignStart="@+id/btn_Review_Samples"
         android:layout_below="@+id/txt_home"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="57dp"
         android:text="Collect Sample"
         android:textAlignment="center"
@@ -39,13 +40,15 @@
         android:id="@+id/btn_Send_Data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_Review_Samples"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="26dp"
         android:text="Send Data to Google Sheets"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="131dp" />
 
     <Button
+<<<<<<< HEAD
         android:id="@+id/btn_Erase_Data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,5 +56,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp"
         android:text="Erase Data" />
+=======
+        android:id="@+id/btn_Review_Samples"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_Collect_Samples"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:text="Review Samples" />
+>>>>>>> origin/master
 
 </RelativeLayout>
