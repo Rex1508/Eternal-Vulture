@@ -45,4 +45,13 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="131dp" />
 
+    <Button
+        android:id="@+id/btn_Erase_Data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_Send_Data"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:text="Erase Data" />
+
 </RelativeLayout>

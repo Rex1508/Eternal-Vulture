@@ -32,8 +32,8 @@ public class Measurements extends AppCompatActivity implements View.OnClickListe
 
 
     Button btn_next;
-    RadioButton stream;
-    RadioButton bucket;
+    CheckBox stream;
+    CheckBox bucket;
     EditText oxygen;
     EditText temp;
     EditText ph;
@@ -80,8 +80,8 @@ public class Measurements extends AppCompatActivity implements View.OnClickListe
 
     private void idControls() {
         btn_next = this.findViewById(R.id.btn_next);
-        stream = this.findViewById(R.id.radio_stream);
-        bucket = this.findViewById(R.id.radio_bucket);
+        stream = this.findViewById(R.id.stream);
+        bucket = this.findViewById(R.id.bucket);
         oxygen = this.findViewById(R.id.oxygen);
         temp = this.findViewById(R.id.temp);
         ph = this.findViewById(R.id.ph);

@@ -21,8 +21,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/radio-bucket"
+        <CheckBox
+            android:id="@+id/bucket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -30,8 +30,8 @@
             tools:layout_editor_absoluteX="211dp"
             tools:layout_editor_absoluteY="372dp" />
 
-        <RadioButton
-            android:id="@+id/radio_stream"
+        <CheckBox
+            android:id="@+id/stream"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

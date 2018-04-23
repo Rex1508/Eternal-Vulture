@@ -124,29 +124,63 @@ public class Observations extends AppCompatActivity implements View.OnClickListe
 
         FileOutputStream fos = null;
         try{
-            fos = new FileOutputStream(file);
+            fos = new FileOutputStream(file,true);
         }
         catch (FileNotFoundException e) {e.printStackTrace();}
         try {
             try {
-                Map<String, ?> allEntries = s.getAll();
-                for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
-                    fos.write(entry.getValue().toString().getBytes());
-                    fos.write(",".getBytes());
-                }
 
-                fos.write(String.valueOf(highwater.isChecked()).getBytes());
+                fos.write(s.getString("collector_name", "NOT_FOUND").getBytes());
                 fos.write(",".getBytes());
-                fos.write(String.valueOf(lowwater.isChecked()).getBytes());
+                fos.write(s.getString("collection_date", "NOT_FOUND").getBytes());
                 fos.write(",".getBytes());
-                fos.write(String.valueOf(debris.isChecked()).getBytes());
+                fos.write(s.getString("collection_time", "NOT_FOUND").getBytes());
                 fos.write(",".getBytes());
+                fos.write(s.getString("collection_location", "NOT_FOUND").getBytes());
+                fos.write(",".getBytes());
+
+                if (s.getBoolean("YSI556",false)){fos.write("YSI556 ".getBytes());}
+                if (s.getBoolean("YSI55",false)){fos.write("YSI55 ".getBytes());}
+                if (s.getBoolean("AccAP",false)){fos.write("AccAP ".getBytes());}
+                if (s.getBoolean("HachP",false)){fos.write("HachP ".getBytes());}
+                if (s.getBoolean("YSIPro",false)){fos.write("YSIPro ".getBytes());}
+                if (s.getBoolean("HachQ",false)){fos.write("HachQ ".getBytes());}
+                if (s.getBoolean("Acc61",false)){fos.write("Acc61 ".getBytes());}
+                fos.write(",".getBytes());
+
+                if (s.getBoolean("stream",false)){fos.write("stream ".getBytes());}
+                if (s.getBoolean("bucket",false)){fos.write("bucket".getBytes());}
+                fos.write(",".getBytes());
+
+                fos.write(s.getString("oxygen","NOT_FOUND").getBytes());
+                fos.write(",".getBytes());
+                fos.write(s.getString("temp","NOT_FOUND").getBytes());
+                fos.write(",".getBytes());
+                fos.write(s.getString("ph","NOT_FOUND").getBytes());
+                fos.write(",".getBytes());
+                fos.write(s.getString("conductance","NOT_FOUND").getBytes());
+                fos.write(",".getBytes());
+                fos.write(s.getString("turbidity","NOT_FOUND").getBytes());
+                fos.write(",".getBytes());
+
+
+                if (highwater.isChecked()){fos.write("High water ".getBytes());}
+                if (lowwater.isChecked()){fos.write("Low water ".getBytes());}
+                if (debris.isChecked()){fos.write("Debris ".getBytes());}
+                fos.write(",".getBytes());
+
+
+                /*
                 fos.write(String.valueOf(sample1.isChecked()).getBytes());
                 fos.write(",".getBytes());
                 fos.write(String.valueOf(sample2.isChecked()).getBytes());
                 fos.write(",".getBytes());
                 fos.write(String.valueOf(sample3.isChecked()).getBytes());
                 fos.write(",".getBytes());
+                */
+
+
+                fos.write(edt_comments.getText().toString().getBytes());
 
                 fos.write("\n".getBytes());
             }

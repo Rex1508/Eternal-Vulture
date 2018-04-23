@@ -45,6 +45,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
     Button collect_sample;
     Button send_data;
+    Button erase_data;
 
     TextView home;
 
@@ -56,6 +57,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         setContentView(R.layout.activity_home);
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, 0);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_NETWORK_STATE}, 0);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_WIFI_STATE}, 0);
 
         idControls();
 
@@ -70,7 +75,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         send_data = (Button) this.findViewById(R.id.btn_Send_Data);
         send_data.setOnClickListener(this);
 
+        erase_data = this.findViewById(R.id.btn_Erase_Data);
+        erase_data.setOnClickListener(this);
+
         home = this.findViewById(R.id.txt_home);
+
+
 
     }
 
@@ -93,8 +103,17 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                 int result = getData();
 
                 if (result!=0){error(result);}
+                else{new SendRequest().execute();}
 
                 break;
+
+            case R.id.btn_Erase_Data:
+                String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+                String fileName = "Data.csv";
+
+                File file = new File(baseDir+"/"+fileName);
+
+                file.delete();
 
         }
 
@@ -120,10 +139,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                 total.append(line);
             }
 
+            //home.setText(total.toString());
 
-            home.setText(total.toString());
-
-            return sendData(total.toString());
+            return 0;
 
 
         }
@@ -132,9 +150,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         }
         catch(IOException e){
             return 2;
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return 3;
         } catch (Exception e) {
             e.printStackTrace();
             return 4;
@@ -142,69 +157,21 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
     }
 
-    public int sendData(String str) throws Exception {
-
-        URL url = new URL("https://script.google.com/macros/s/AKfycby9uEj0M4N5yz7EDwNxn4NWkslqXAJfqTOD66IGlTvqlgi8ylw/exec");
-        JSONObject postDataParams = new JSONObject();
-
-
-        postDataParams.put("comments",valueOf(str));
-
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setReadTimeout(15000 /* milliseconds */);
-        conn.setConnectTimeout(15000 /* milliseconds */);
-        conn.setRequestMethod("POST");
-        conn.setDoInput(true);
-        conn.setDoOutput(true);
-
-        OutputStream os = conn.getOutputStream();
-        BufferedWriter writer = new BufferedWriter(
-                new OutputStreamWriter(os, "UTF-8"));
-        writer.write(getPostDataString(postDataParams));
-
-        writer.flush();
-        writer.close();
-        os.close();
-
-        return 0;
-    }
 
 
 
-    public String getPostDataString(JSONObject params) throws Exception {
 
-        StringBuilder result = new StringBuilder();
-        boolean first = true;
 
-        Iterator<String> itr = params.keys();
-
-        while(itr.hasNext()){
-
-            String key= itr.next();
-            Object value = params.get(key);
-
-            if (first)
-                first = false;
-            else
-                result.append("&");
-
-            result.append(URLEncoder.encode(key, "UTF-8"));
-            result.append("=");
-            result.append(URLEncoder.encode(value.toString(), "UTF-8"));
-
-        }
-        return result.toString();
-    }
 
 
 
 
     public void error(int num){
 
-        View view = this.getCurrentFocus();
+        //View view = this.getCurrentFocus();
 
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        //InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        //imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
@@ -231,9 +198,19 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         });
 
         TextView txt = new TextView(this);
-        if (num!=0) {
+        if (num==1) {
             txt.setText("Data file not readable (Data.csv)");
         }
+        if (num==2) {
+            txt.setText("IO Error (Data.csv)");
+        }
+        if (num==3) {
+            txt.setText("JSON Error");
+        }
+        if (num==4) {
+            txt.setText("????? Error");
+        }
+
         ll_main.addView(txt);
 
         TextView space = new TextView(this);
