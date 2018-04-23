@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">EternalVulture</string>
+    <string-array name="Locations_array">
+        <item>Cedar Lake</item>
+        <item>Clear Creek</item>
+        <itme>Cedar River - Edgewood</itme>
+        <item>New Entry</item>
+    </string-array>
 </resources>

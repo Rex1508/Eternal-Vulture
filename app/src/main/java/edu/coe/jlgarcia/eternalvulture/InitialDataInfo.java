@@ -11,10 +11,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.CheckBox;
 import android.support.v7.app.AlertDialog;
+import android.widget.ArrayAdapter;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,7 +28,7 @@ import java.util.Date;
 import java.util.Map;
 
 
-public class InitialDataInfo extends AppCompatActivity implements View.OnClickListener{
+public class InitialDataInfo extends AppCompatActivity implements View.OnClickListener {
 
 
     Button btn_autofill;
@@ -33,7 +36,8 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
     EditText collector_name;
     EditText collection_date;
     EditText collection_time;
-    EditText collection_location;
+    //EditText collection_location; // turned this into a spinner
+    Spinner spn_collection_location;
     CheckBox YSI556;
     CheckBox YSI55;
     CheckBox AccAP;
@@ -41,20 +45,19 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
     CheckBox YSIPro;
     CheckBox HachQ;
     CheckBox Acc61;
+    String[] SpinnerArray; //array of values used in the locations spinner
     //private Handler refreshHandler = new Handler();
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial_data_info);
 
+        fillspinner();
         idControls();
     }
 
-
-    private void idControls(){
+    private void idControls() {
         btn_autofill = (Button) this.findViewById(R.id.btn_autofill);
         btn_autofill.setOnClickListener(this);
         btn_next = (Button) this.findViewById(R.id.btn_next);
@@ -62,7 +65,7 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
         collector_name = (EditText) this.findViewById(R.id.collector_name);
         collection_date = (EditText) this.findViewById(R.id.collection_date);
         collection_time = (EditText) this.findViewById(R.id.collection_time);
-        collection_location = (EditText) this.findViewById(R.id.collection_location);
+        spn_collection_location = (Spinner) this.findViewById(R.id.spn_collection_location); //this was the text edit
         YSI556 = (CheckBox) this.findViewById(R.id.YSI556);
         YSI55 = (CheckBox) this.findViewById(R.id.YSI55);
         AccAP = (CheckBox) this.findViewById(R.id.AccAP);
@@ -72,12 +75,29 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
         Acc61 = (CheckBox) this.findViewById(R.id.Acc61);
     }
 
+    private void fillspinner() {
+        // This function fills the spinner with the values saved in the resources file
+        SpinnerArray = getResources().getStringArray(R.array.Locations_array); // this copies the array string into the local file from the resources
 
+        // Create an ArrayAdapter that will contain all list items
+        ArrayAdapter<String> adapter;
 
+         /* Assign the name array to that adapter and
+        also choose a simple layout for the list items */
+        adapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                SpinnerArray);
+
+        // Assign the adapter to this ListActivity
+        spn_collection_location.setAdapter(adapter);
+        spn_collection_location.setOnItemSelectedListener(this);
+
+    }
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()){
+        switch (v.getId()) {
             case R.id.btn_next:
 
                 if (valid()) {
@@ -88,9 +108,9 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
 
                     //i.putExtra("Initial_Info", /*string with csvs to pass on*/);
                     startActivity(i);
+                } else {
+                    error();
                 }
-
-                else{error();}
                 break;
             case R.id.btn_autofill:
                 // Autofill actions //
@@ -102,13 +122,25 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
 
     }
 
+    abstract class SpinnerActivity extends InitialDataInfo implements OnItemSelectedListener {
 
+
+        void onItemSelected(AdapterView<?> parent, View view,
+                                   int pos, long id) {
+            // An item was selected. You can retrieve the selected item using
+            // parent.getItemAtPosition(pos)
+        }
+
+        public void onNothingSelected(AdapterView<?> parent) {
+            // Another interface callback
+        }
+    }
     private boolean valid(){
         boolean valid = true;
 
         if (collector_name.getText().toString().equals("")){valid = false;}
         if (collection_date.getText().toString().equals("")){valid = false;}
-        if (collection_location.getText().toString().equals("")){valid = false;}
+        if (spn_collection_location.getText().toString().equals("")){valid = false;}// fix for spinner
         if (collection_time.getText().toString().equals("")){valid = false;}
 
 
@@ -139,7 +171,7 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
 */
 
 
-    private void error(){
+    private void error(){ // update this to reflect the spinner change
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
 
@@ -184,7 +216,7 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
         e.putString("collector_name",collector_name.getText().toString());
         e.putString("collection_date",collection_date.getText().toString());
         e.putString("collection_time",collection_time.getText().toString());
-        e.putString("collection_location",collection_location.getText().toString());
+        e.putString("collection_location",collection_location.getText().toString()); /// this needs to get changed
 
         e.putBoolean("YSI556",YSI556.isChecked());
         e.putBoolean("YSI55",YSI55.isChecked());
