@@ -120,9 +120,9 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
         Calendar c = Calendar.getInstance();
 
         // For some god-forsaken reason months start at 0 in here
-        String date = (c.get(Calendar.MONTH)+1) + "-"
+        String date = (c.get(Calendar.MONTH)+1) + "/"
                 + c.get(Calendar.DAY_OF_MONTH)
-                + "-" + c.get(Calendar.YEAR);
+                + "/" + c.get(Calendar.YEAR);
 
         String time =c.get(Calendar.HOUR_OF_DAY)
                 + ":" + c.get(Calendar.MINUTE);

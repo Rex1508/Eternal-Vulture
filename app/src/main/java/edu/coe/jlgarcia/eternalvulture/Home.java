@@ -45,12 +45,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
     Button collect_sample;
     Button send_data;
-<<<<<<< HEAD
     Button erase_data;
-=======
     Button review_sample;
->>>>>>> origin/master
-
     TextView home;
 
 
@@ -79,13 +75,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         send_data = (Button) this.findViewById(R.id.btn_Send_Data);
         send_data.setOnClickListener(this);
 
-<<<<<<< HEAD
+
         erase_data = this.findViewById(R.id.btn_Erase_Data);
         erase_data.setOnClickListener(this);
-=======
-        review_sample = (Button)this.findViewById(R.id.btn_Review_Samples);
-        review_sample.setOnClickListener(this);
->>>>>>> origin/master
 
         home = this.findViewById(R.id.txt_home);
 
@@ -115,10 +107,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                 else{new SendRequest().execute();}
 
                 break;
-            case R.id.btn_Review_Samples:
-
-                Intent j = new Intent(Home.this, Review.class); // prep the review page to be opened
-                startActivity(j); //start next activity. Do I need to worry about closing this activity?????
 
 
             case R.id.btn_Erase_Data:
