@@ -28,7 +28,6 @@ import java.util.Map;
 public class InitialDataInfo extends AppCompatActivity implements View.OnClickListener{
 
 
-    Button btn_autofill;
     Button btn_next;
     EditText collector_name;
     EditText collection_date;
@@ -49,14 +48,12 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial_data_info);
-
+        getTime();
         idControls();
     }
 
 
     private void idControls(){
-        btn_autofill = (Button) this.findViewById(R.id.btn_autofill);
-        btn_autofill.setOnClickListener(this);
         btn_next = (Button) this.findViewById(R.id.btn_next);
         btn_next.setOnClickListener(this);
         collector_name = (EditText) this.findViewById(R.id.collector_name);
@@ -92,11 +89,6 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
 
                 else{error();}
                 break;
-            case R.id.btn_autofill:
-                // Autofill actions //
-
-                getTime();
-                //getLocation();
 
         }
 
