@@ -180,7 +180,7 @@ public class Observations extends AppCompatActivity implements View.OnClickListe
                 */
 
 
-                fos.write(edt_comments.getText().toString().getBytes());
+                fos.write((edt_comments.getText().toString()+" ").getBytes());
 
                 fos.write("\n".getBytes());
             }

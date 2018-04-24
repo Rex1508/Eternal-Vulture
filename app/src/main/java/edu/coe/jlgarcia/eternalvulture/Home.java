@@ -5,8 +5,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
@@ -43,6 +45,10 @@ import java.net.Socket;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Iterator;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import static java.lang.Boolean.valueOf;
 
@@ -52,9 +58,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
     Button collect_sample;
     Button send_data;
-    Button erase_data;
-    Button review_sample;
+    Button documentation;
     TextView home;
+
+    ReentrantLock lock;
 
 
 
@@ -82,13 +89,16 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         send_data = (Button) this.findViewById(R.id.btn_Send_Data);
         send_data.setOnClickListener(this);
 
+        documentation = (Button) this.findViewById(R.id.btn_Documentation);
+        documentation.setOnClickListener(this);
 
-        erase_data = this.findViewById(R.id.btn_Erase_Data);
-        erase_data.setOnClickListener(this);
+
+        //erase_data = this.findViewById(R.id.btn_Erase_Data);
+        //erase_data.setOnClickListener(this);
 
         home = this.findViewById(R.id.txt_home);
 
-
+        lock = new ReentrantLock();
 
     }
 
@@ -119,7 +129,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
                 break;
 
+            case R.id.btn_Documentation:
+                eraseData();
 
+                /*
             case R.id.btn_Erase_Data:
                 String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
                 String fileName = "Data.csv";
@@ -127,6 +140,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                 File file = new File(baseDir+"/"+fileName);
 
                 file.delete();
+                */
 
         }
 
@@ -152,6 +166,13 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
 
         //refreshHandler.post(update);
+
+        TextView header = new TextView(this);
+        header.setTextSize(20);
+        header.setText("Date                 Location");
+        header.setTypeface(Typeface.DEFAULT_BOLD);
+
+        ll_main.addView(header);
 
         String raw_data = getData();
         String[] data = raw_data.toString().split("\n");
@@ -196,7 +217,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         ll_main.addView(space);
 
         TextView warning = new TextView(this);
-        warning.setText("WARNING: Data sent will be erased from this device");
+        warning.setText("WARNING: Data will be erased from this device after being sent");
         ll_main.addView(warning);
 
         Button send = new Button(this);
@@ -204,7 +225,12 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //lock.lock();
                 new SendRequest().execute();
+                //lock.unlock();
+
+                //eraseData();
                 alertDialog.dismiss();
             }
         });
@@ -218,6 +244,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
     }
 
+    private void eraseData(){
+        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+        String fileName = "Data.csv";
+
+        File file = new File(baseDir+"/"+fileName);
+
+        file.delete();
+    }
 
     public String getData() throws IOException {
 

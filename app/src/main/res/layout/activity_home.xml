@@ -27,8 +27,9 @@
         android:id="@+id/btn_Collect_Samples"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_Documentation"
+        android:layout_alignStart="@+id/btn_Documentation"
         android:layout_below="@+id/txt_home"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="34dp"
         android:text="Collect Sample"
         android:textAlignment="center"
@@ -39,20 +40,20 @@
         android:id="@+id/btn_Send_Data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_Erase_Data"
+        android:layout_below="@+id/btn_Collect_Samples"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="29dp"
         android:text="Send Data to Google Sheets"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="131dp" />
 
     <Button
-        android:id="@+id/btn_Erase_Data"
+        android:id="@+id/btn_Documentation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_Collect_Samples"
+        android:layout_below="@+id/btn_Send_Data"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:text="Erase Data" />
+        android:layout_marginTop="36dp"
+        android:text="Documentation" />
 
 </RelativeLayout>

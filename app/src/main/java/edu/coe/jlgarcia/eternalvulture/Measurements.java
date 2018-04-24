@@ -97,6 +97,11 @@ public class Measurements extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_next:
+                double ph_int = Double.valueOf(ph.getText().toString());
+                if (ph_int<0 || ph_int>14) {
+                    badError();
+                    break;
+                }
                 if (valid() == 1 || warned) {
                     saveData();
                     Intent i = new Intent(Measurements.this, Observations.class);
@@ -288,6 +293,48 @@ public class Measurements extends AppCompatActivity implements View.OnClickListe
 
         e.commit();
 
+    }
+
+    private void badError(){
+        View view = this.getCurrentFocus();
+
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
+
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+
+        LinearLayout ll_main = new LinearLayout(this);
+        ll_main.setOrientation(LinearLayout.VERTICAL);
+
+        ll_main.setOrientation(LinearLayout.VERTICAL);
+        ll_main.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+
+        LinearLayout ll = new LinearLayout(this);
+        ll.setOrientation(LinearLayout.VERTICAL);
+
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // set dialog message
+        alertDialogBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                alertDialog.dismiss();
+            }
+        });
+
+        TextView txt = new TextView(this);
+        txt.setTextSize(20);
+        txt.setText("ERROR: pH value is impossible");
+        ll_main.addView(txt);
+
+        ll_main.addView(ll);
+
+        alertDialog.setTitle("ERROR");
+
+        // show it
+        alertDialog.setView(ll_main);
+        alertDialog.show();
     }
 
 }

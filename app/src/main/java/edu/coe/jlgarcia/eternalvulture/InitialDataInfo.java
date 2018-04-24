@@ -124,8 +124,14 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
                 + c.get(Calendar.DAY_OF_MONTH)
                 + "/" + c.get(Calendar.YEAR);
 
-        String time =c.get(Calendar.HOUR_OF_DAY)
-                + ":" + c.get(Calendar.MINUTE);
+        int hour,minute;
+        hour = c.get(Calendar.HOUR_OF_DAY);
+        minute = c.get(Calendar.MINUTE);
+
+
+        String time = c.get(Calendar.HOUR_OF_DAY) + ":";
+        if (minute<10){time += "0";}
+        time += minute;
 
         collection_date.setText(date);
         collection_time.setText(time);
