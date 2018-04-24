@@ -52,7 +52,6 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
         idControls();
     }
 
-
     private void idControls(){
         btn_next = (Button) this.findViewById(R.id.btn_next);
         btn_next.setOnClickListener(this);
@@ -68,9 +67,6 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
         HachQ = (CheckBox) this.findViewById(R.id.HachQ);
         Acc61 = (CheckBox) this.findViewById(R.id.Acc61);
     }
-
-
-
 
     @Override
     public void onClick(View v) {
@@ -94,7 +90,6 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
 
     }
 
-
     private boolean valid(){
         boolean valid = true;
 
@@ -103,10 +98,8 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
         if (collection_location.getText().toString().equals("")){valid = false;}
         if (collection_time.getText().toString().equals("")){valid = false;}
 
-
         return valid;
     }
-
 
     private void getTime(){
         Calendar c = Calendar.getInstance();

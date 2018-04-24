@@ -2,17 +2,20 @@ package edu.coe.jlgarcia.eternalvulture;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,8 +75,6 @@ public class Observations extends AppCompatActivity implements View.OnClickListe
         idControls();
     }
 
-
-
     private void idControls(){
         finish = this.findViewById(R.id.btn_Finish);
         finish.setOnClickListener(this);
@@ -89,29 +90,23 @@ public class Observations extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
-
     public void onClick(View v) {
         // improves = add things for the other buttons!
         switch (v.getId()) {
             case R.id.btn_Finish: //If e click the finish button, it will complete and go to the home page
-                // improves = validate that the checkboxes have been clicked
 
-                saveData();
+                if (valid())
+                {
+                saveData(); // save all the data that has been collected
 
-                /*
-                Intent i = new Intent(Observations.this, Home.class);
-                startActivity(i);
-                */
                 Intent intent = new Intent(getApplicationContext(), Home.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                }
+                else{error();}
                 break;
         }
     }
-
-
-
 
     public void saveData() {
 
@@ -194,7 +189,51 @@ public class Observations extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    public boolean valid()
+    {
+        boolean valid = true;
+        if(highwater.isChecked() && lowwater.isChecked()) valid = false;
+        if(sample1.isChecked()==false || sample2.isChecked()==false || sample3.isChecked()==false) valid = false;
+        return valid;
+    }
 
+    private void error() {
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+
+        LinearLayout ll_main = new LinearLayout(this);
+        ll_main.setOrientation(LinearLayout.VERTICAL);
+
+        ll_main.setOrientation(LinearLayout.VERTICAL);
+
+        LinearLayout ll = new LinearLayout(this);
+        ll.setOrientation(LinearLayout.HORIZONTAL);
+
+        ll_main.addView(ll);
+
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // set dialog message
+        alertDialogBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                alertDialog.dismiss();
+            }
+        });
+
+        if (highwater.isChecked() && lowwater.isChecked()) //message to give for high and low water
+        {
+            TextView txt1 = new TextView(this);
+            txt1.setText("You cannot select both High water and Low Water");
+            ll.addView(txt1);
+        }
+        if (sample1.isChecked()==false || sample2.isChecked()==false || sample3.isChecked()==false)
+        {
+            TextView txt2 = new TextView(this);
+            txt2.setText("Make sure you label all samples");
+            ll.addView(txt2);
+        }
+
+    }
     }
 
 
