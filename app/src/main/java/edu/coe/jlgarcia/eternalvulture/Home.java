@@ -5,15 +5,20 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -31,8 +36,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
+import java.net.Socket;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Iterator;
@@ -86,6 +93,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     }
 
 
+
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_Collect_Samples:
@@ -101,10 +109,13 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                 startActivity(i); //start next activity
                 break;
             case R.id.btn_Send_Data:
-                int result = getData();
 
-                if (result!=0){error(result);}
-                else{new SendRequest().execute();}
+                try {
+                    sendData();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                    error(2);
+                }
 
                 break;
 
@@ -122,14 +133,117 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     }
 
 
+    public void sendData() throws IOException {
 
-    public int getData(){
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+
+        LinearLayout ll_main = new LinearLayout(this);
+        ll_main.setOrientation(LinearLayout.VERTICAL);
+
+        ll_main.setOrientation(LinearLayout.VERTICAL);
+        ll_main.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        ScrollView scrollview = new ScrollView(this);
+
+        LinearLayout ll = new LinearLayout(this);
+        ll.setOrientation(LinearLayout.VERTICAL);
+        ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
+
+        //refreshHandler.post(update);
+
+        String raw_data = getData();
+        String[] data = raw_data.toString().split("\n");
+        String split_data[];
+
+        TextView[] info = new TextView[100];
+
+        for (int i=0; i<100; i++){
+            info[i] = new TextView(this);
+            info[i].setText("");
+            info[i].setTextSize(20);
+        }
+        if (data.length<100) {
+            for (int i = 0; i < data.length; i++) {
+                split_data = data[i].split(",");
+                info[i].setText("-" + split_data[1] + "    " + split_data[3]);
+                //Log.e("TESTING",split_data[1] + "\t" + split_data[3]);
+            }
+            for (int i = 0; i < data.length; i++) {
+                ll.addView(info[i]);
+            }
+        }
+        else{
+            info[0].setText("ERROR: Cannot display more than 100 samples");
+            ll.addView(info[0]);
+        }
+        scrollview.addView(ll);
+        ll_main.addView(scrollview);
+
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // set dialog message
+            alertDialogBuilder.setCancelable(false).setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                alertDialog.dismiss();
+            }
+        });
+
+
+        TextView space = new TextView(this);
+        space.setText(" ");
+        ll_main.addView(space);
+
+        TextView warning = new TextView(this);
+        warning.setText("WARNING: Data sent will be erased from this device");
+        ll_main.addView(warning);
+
+        Button send = new Button(this);
+        send.setText("SEND");
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new SendRequest().execute();
+                alertDialog.dismiss();
+            }
+        });
+        ll_main.addView(send);
+
+        alertDialog.setTitle("Review Data to be sent");
+
+        // show it
+        alertDialog.setView(ll_main);
+        alertDialog.show();
+
+    }
+
+
+    public String getData() throws IOException {
+
+        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+        String fileName = "Data.csv";
+
+        File file = new File(baseDir + "/" + fileName);
+        InputStream inputStream = new FileInputStream(file);
+        BufferedReader r = new BufferedReader(new InputStreamReader(inputStream));
+        StringBuilder total = new StringBuilder();
+        String line_in;
+
+        while ((line_in = r.readLine()) != null) {
+            total.append(line_in);
+            total.append('\n');
+        }
+
+        return total.toString();
+    }
+
+
+    public int testData(){
         String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
         String fileName = "Data.csv";
 
         File file = new File(baseDir+"/"+fileName);
-
-        String data;
 
         try {
             InputStream inputStream = new FileInputStream(file);
@@ -141,7 +255,15 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                 total.append(line);
             }
 
-            //home.setText(total.toString());
+
+
+
+            // CHECK FOR INTERNET CONNECTION
+            //if(new TestConnection().execute().get()){return 5;}
+            ////// OR ////////
+            //ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            /////////////////////////
+
 
             return 0;
 
@@ -158,14 +280,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         }
 
     }
-
-
-
-
-
-
-
-
 
 
     public void error(int num){
@@ -211,6 +325,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         }
         if (num==4) {
             txt.setText("????? Error");
+        }
+        if(num==5){
+            txt.setText("No internet connection");
         }
 
         ll_main.addView(txt);

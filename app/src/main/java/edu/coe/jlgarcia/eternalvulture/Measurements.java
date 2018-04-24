@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
@@ -231,26 +232,31 @@ public class Measurements extends AppCompatActivity implements View.OnClickListe
             TextView txt6 = new TextView(this);
             txt6.setText("-Oxygen value out of normal range");
             ll.addView(txt6);
+            oxygen.setTextColor(Color.RED);
         }
         if (num % TEMP_OOR == 0) {
             TextView txt7 = new TextView(this);
             txt7.setText("-Temp value out of normal range");
             ll.addView(txt7);
+            temp.setTextColor(Color.RED);
         }
         if (num % PH_OOR == 0) {
             TextView txt8 = new TextView(this);
             txt8.setText("-pH value out of normal range");
             ll.addView(txt8);
+            ph.setTextColor(Color.RED);
         }
         if (num % CONDUCTANCE_OOR == 0) {
             TextView txt9 = new TextView(this);
             txt9.setText("-Conductance value out of normal range");
             ll.addView(txt9);
+            conductance.setTextColor(Color.RED);
         }
         if (num % TURBIDITY_OOR == 0) {
             TextView txt10 = new TextView(this);
             txt10.setText("-Turbidity value out of normal range");
             ll.addView(txt10);
+            turbidity.setTextColor(Color.RED);
         }
 
         ll_main.addView(ll);

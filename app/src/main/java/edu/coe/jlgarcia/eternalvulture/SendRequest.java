@@ -1,10 +1,14 @@
 package edu.coe.jlgarcia.eternalvulture;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
 import org.json.JSONObject;
+
+import android.content.SharedPreferences;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -24,7 +28,9 @@ import javax.net.ssl.HttpsURLConnection;
 public class SendRequest extends AsyncTask<String, Void, String> {
 
 
-    protected void onPreExecute(){}
+    protected void onPreExecute(){
+
+    }
 
     protected String doInBackground(String... arg0) {
 
@@ -130,7 +136,7 @@ public class SendRequest extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        //Toast.makeText(this, result,
+        //Toast.makeText(context, result,
           //      Toast.LENGTH_LONG).show();
 
     }
