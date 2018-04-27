@@ -97,11 +97,14 @@ public class Measurements extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_next:
-                double ph_int = Double.valueOf(ph.getText().toString());
-                if (ph_int<0 || ph_int>14) {
-                    badError();
-                    break;
+                try {
+                    double ph_int = Double.valueOf(ph.getText().toString());
+                    if (ph_int < 0 || ph_int > 14) {
+                        badError();
+                        break;
+                    }
                 }
+                catch(Exception e){e.printStackTrace();}
                 if (valid() == 1 || warned) {
                     saveData();
                     Intent i = new Intent(Measurements.this, Observations.class);
@@ -171,7 +174,7 @@ public class Measurements extends AppCompatActivity implements View.OnClickListe
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
-        warned = true;
+        boolean cont = true;
 
 
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -209,59 +212,79 @@ public class Measurements extends AppCompatActivity implements View.OnClickListe
         if (num % OXYGEN_BLANK == 0) {
             TextView txt1 = new TextView(this);
             txt1.setText("-Oxygen field left blank");
+            txt1.setTextSize(20);
             ll.addView(txt1);
+            cont = false;
         }
         if (num % TEMP_BLANK == 0) {
             TextView txt2 = new TextView(this);
             txt2.setText("-Temp field left blank");
+            txt2.setTextSize(20);
             ll.addView(txt2);
+            cont = false;
         }
         if (num % PH_BLANK == 0) {
             TextView txt3 = new TextView(this);
             txt3.setText("-pH field left blank");
+            txt3.setTextSize(20);
             ll.addView(txt3);
+            cont = false;
         }
         if (num % CONDUCTANCE_BLANK == 0) {
             TextView txt4 = new TextView(this);
             txt4.setText("-Conductance field left blank");
+            txt4.setTextSize(20);
             ll.addView(txt4);
+            cont = false;
         }
         if (num % TURBIDITY_BLANK == 0) {
             TextView txt5 = new TextView(this);
             txt5.setText("-Turbidity field left blank");
+            txt5.setTextSize(20);
             ll.addView(txt5);
+            cont = false;
         }
 
 
-        if (num % OXYGEN_OOR == 0) {
-            TextView txt6 = new TextView(this);
-            txt6.setText("-Oxygen value out of normal range");
-            ll.addView(txt6);
-            oxygen.setTextColor(Color.RED);
-        }
-        if (num % TEMP_OOR == 0) {
-            TextView txt7 = new TextView(this);
-            txt7.setText("-Temp value out of normal range");
-            ll.addView(txt7);
-            temp.setTextColor(Color.RED);
-        }
-        if (num % PH_OOR == 0) {
-            TextView txt8 = new TextView(this);
-            txt8.setText("-pH value out of normal range");
-            ll.addView(txt8);
-            ph.setTextColor(Color.RED);
-        }
-        if (num % CONDUCTANCE_OOR == 0) {
-            TextView txt9 = new TextView(this);
-            txt9.setText("-Conductance value out of normal range");
-            ll.addView(txt9);
-            conductance.setTextColor(Color.RED);
-        }
-        if (num % TURBIDITY_OOR == 0) {
-            TextView txt10 = new TextView(this);
-            txt10.setText("-Turbidity value out of normal range");
-            ll.addView(txt10);
-            turbidity.setTextColor(Color.RED);
+
+        if (cont) {
+
+            warned = true;
+            if (num % OXYGEN_OOR == 0) {
+                TextView txt6 = new TextView(this);
+                txt6.setText("-Oxygen value out of normal range");
+                txt6.setTextSize(20);
+                ll.addView(txt6);
+                oxygen.setTextColor(Color.RED);
+            }
+            if (num % TEMP_OOR == 0) {
+                TextView txt7 = new TextView(this);
+                txt7.setText("-Temp value out of normal range");
+                txt7.setTextSize(20);
+                ll.addView(txt7);
+                temp.setTextColor(Color.RED);
+            }
+            if (num % PH_OOR == 0) {
+                TextView txt8 = new TextView(this);
+                txt8.setText("-pH value out of normal range");
+                txt8.setTextSize(20);
+                ll.addView(txt8);
+                ph.setTextColor(Color.RED);
+            }
+            if (num % CONDUCTANCE_OOR == 0) {
+                TextView txt9 = new TextView(this);
+                txt9.setText("-Conductance value out of normal range");
+                txt9.setTextSize(20);
+                ll.addView(txt9);
+                conductance.setTextColor(Color.RED);
+            }
+            if (num % TURBIDITY_OOR == 0) {
+                TextView txt10 = new TextView(this);
+                txt10.setText("-Turbidity value out of normal range");
+                txt10.setTextSize(20);
+                ll.addView(txt10);
+                turbidity.setTextColor(Color.RED);
+            }
         }
 
         ll_main.addView(ll);

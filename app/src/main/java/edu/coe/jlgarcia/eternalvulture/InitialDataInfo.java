@@ -48,8 +48,9 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial_data_info);
-        getTime();
         idControls();
+        getTime();
+
     }
 
     private void idControls(){

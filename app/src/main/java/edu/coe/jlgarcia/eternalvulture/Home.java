@@ -132,6 +132,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                 break;
 
             case R.id.btn_Documentation:
+                break;
 
 
 
@@ -292,7 +293,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
 
         Button cancel = new Button(this);
-        cancel.setText("ERASE DATA ON DEVICE");
+        cancel.setText("CANCEL");
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -417,7 +418,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
             txt.setText("Data file not readable (Data.csv)");
         }
         if (num==2) {
-            txt.setText("IO Error (Data.csv)");
+            txt.setText("No data on device");
         }
         if (num==3) {
             txt.setText("JSON Error");

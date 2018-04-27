@@ -193,7 +193,9 @@ public class Observations extends AppCompatActivity implements View.OnClickListe
     {
         boolean valid = true;
         if(highwater.isChecked() && lowwater.isChecked()) valid = false;
-        if(sample1.isChecked()==false || sample2.isChecked()==false || sample3.isChecked()==false) valid = false;
+        if(sample1.isChecked()==false || sample2.isChecked()==false || sample3.isChecked()==false){
+            valid = false;
+        }
         return valid;
     }
 
@@ -207,7 +209,7 @@ public class Observations extends AppCompatActivity implements View.OnClickListe
         ll_main.setOrientation(LinearLayout.VERTICAL);
 
         LinearLayout ll = new LinearLayout(this);
-        ll.setOrientation(LinearLayout.HORIZONTAL);
+        ll.setOrientation(LinearLayout.VERTICAL);
 
         ll_main.addView(ll);
 
@@ -224,14 +226,19 @@ public class Observations extends AppCompatActivity implements View.OnClickListe
         {
             TextView txt1 = new TextView(this);
             txt1.setText("You cannot select both High water and Low Water");
+            txt1.setTextSize(20);
             ll.addView(txt1);
         }
         if (sample1.isChecked()==false || sample2.isChecked()==false || sample3.isChecked()==false)
         {
             TextView txt2 = new TextView(this);
             txt2.setText("Make sure you label all samples");
+            txt2.setTextSize(20);
             ll.addView(txt2);
         }
+
+        alertDialog.setView(ll_main);
+        alertDialog.show();
 
     }
     }
