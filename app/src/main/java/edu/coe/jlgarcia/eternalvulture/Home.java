@@ -59,6 +59,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     Button collect_sample;
     Button send_data;
     Button documentation;
+    Button erase_data;
+
     TextView home;
 
     ReentrantLock lock;
@@ -93,8 +95,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         documentation.setOnClickListener(this);
 
 
-        //erase_data = this.findViewById(R.id.btn_Erase_Data);
-        //erase_data.setOnClickListener(this);
+        erase_data = this.findViewById(R.id.btn_Erase_Data);
+        erase_data.setOnClickListener(this);
 
         home = this.findViewById(R.id.txt_home);
 
@@ -130,18 +132,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                 break;
 
             case R.id.btn_Documentation:
-                eraseData();
 
-                /*
+
+
             case R.id.btn_Erase_Data:
-                String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
-                String fileName = "Data.csv";
-
-                File file = new File(baseDir+"/"+fileName);
-
-                file.delete();
-                */
-
+                eraseData();
         }
 
     }
@@ -245,12 +240,82 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     }
 
     private void eraseData(){
-        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
-        String fileName = "Data.csv";
 
-        File file = new File(baseDir+"/"+fileName);
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
-        file.delete();
+
+        LinearLayout ll_main = new LinearLayout(this);
+        ll_main.setOrientation(LinearLayout.VERTICAL);
+
+        ll_main.setOrientation(LinearLayout.VERTICAL);
+
+        LinearLayout ll = new LinearLayout(this);
+        ll.setOrientation(LinearLayout.HORIZONTAL);
+
+
+        ll_main.addView(ll);
+
+        //refreshHandler.post(update);
+
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // set dialog message
+        alertDialogBuilder.setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                alertDialog.dismiss();
+            }});
+
+        TextView txt = new TextView(this);
+        txt.setText("This operation cannot be undone");
+        ll_main.addView(txt);
+
+        Button erase = new Button(this);
+        erase.setText("ERASE DATA ON DEVICE");
+        erase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+                String fileName = "Data.csv";
+
+                File file = new File(baseDir+"/"+fileName);
+
+                file.delete();
+
+                alertDialog.dismiss();
+            }
+        });
+        ll_main.addView(erase);
+
+        TextView space = new TextView(this);
+        space.setText(" ");
+        ll_main.addView(space);
+
+
+        Button cancel = new Button(this);
+        cancel.setText("ERASE DATA ON DEVICE");
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+            }
+        });
+        ll_main.addView(cancel);
+
+        alertDialog.setTitle("Confirm Delete");
+
+        // show it
+        alertDialog.setView(ll_main);
+        alertDialog.show();
+
+
+
+
+
+
+
+
+
+
     }
 
     public String getData() throws IOException {

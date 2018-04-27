@@ -66,6 +66,18 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
         YSIPro = (CheckBox) this.findViewById(R.id.YSIPro);
         HachQ = (CheckBox) this.findViewById(R.id.HachQ);
         Acc61 = (CheckBox) this.findViewById(R.id.Acc61);
+
+        SharedPreferences p = getSharedPreferences("Persistence",0);
+
+        collector_name.setText(p.getString("name",""));
+
+        if(p.getBoolean("YSI556",false)){YSI556.setChecked(true);}
+        if(p.getBoolean("YSI55",false)){YSI55.setChecked(true);}
+        if(p.getBoolean("AccAP",false)){AccAP.setChecked(true);}
+        if(p.getBoolean("HachP",false)){HachP.setChecked(true);}
+        if(p.getBoolean("YSIPro",false)){YSIPro.setChecked(true);}
+        if(p.getBoolean("HachQ",false)){HachQ.setChecked(true);}
+        if(p.getBoolean("Acc61",false)){Acc61.setChecked(true);}
     }
 
     @Override
@@ -186,6 +198,22 @@ public class InitialDataInfo extends AppCompatActivity implements View.OnClickLi
         e.putBoolean("Acc61",Acc61.isChecked());
 
         e.apply();
+
+        SharedPreferences p;
+        p = getSharedPreferences("Persistence",0);
+
+        SharedPreferences.Editor pe = p.edit();
+
+        pe.putString("name",collector_name.getText().toString());
+        pe.putBoolean("YSI556",YSI556.isChecked());
+        pe.putBoolean("YSI55",YSI55.isChecked());
+        pe.putBoolean("AccAP",AccAP.isChecked());
+        pe.putBoolean("HachP",HachP.isChecked());
+        pe.putBoolean("YSIPro",YSIPro.isChecked());
+        pe.putBoolean("HachQ",HachQ.isChecked());
+        pe.putBoolean("Acc61",Acc61.isChecked());
+
+        pe.apply();
 
     }
 
