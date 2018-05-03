@@ -37,7 +37,8 @@ public class SendRequest extends AsyncTask<String, Void, String> {
         String result = "Something went wrong in SendRequest.java, doInBackground()";
 
         try {
-            URL url = new URL("https://script.google.com/macros/s/AKfycby9uEj0M4N5yz7EDwNxn4NWkslqXAJfqTOD66IGlTvqlgi8ylw/exec\n");
+            //URL url = new URL("https://script.google.com/macros/s/AKfycby9uEj0M4N5yz7EDwNxn4NWkslqXAJfqTOD66IGlTvqlgi8ylw/exec\n");
+            URL url = new URL("https://script.google.com/macros/s/AKfycbwrFYSbWdoH27SsbOp-DCqTTnpT3lXUUEL0_zwj/exec\n");
             JSONObject postDataParams = new JSONObject();
 
 
@@ -82,8 +83,9 @@ public class SendRequest extends AsyncTask<String, Void, String> {
                 postDataParams.put("ph", data[8]);
                 postDataParams.put("conductance", data[9]);
                 postDataParams.put("turbidity", data[10]);
-                postDataParams.put("observations", data[11]);
-                postDataParams.put("comments", data[12]);
+                postDataParams.put("fieldnitrate", data[11]);
+                postDataParams.put("observations", data[12]);
+                postDataParams.put("comments", data[13]);
                 postDataParams.put("id", id);
 
 

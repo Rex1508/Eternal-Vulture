@@ -63,6 +63,6 @@
         android:layout_below="@+id/btn_Documentation"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-        android:text="Erase Data" />
+        android:text="Erase Data On Device" />
 
 </RelativeLayout>

@@ -40,6 +40,7 @@ public class Measurements extends AppCompatActivity implements View.OnClickListe
     EditText ph;
     EditText conductance;
     EditText turbidity;
+    EditText fieldnitrate;
 
     // Primes used to signal that certain errors occurred without
     // having to pass a bool array
@@ -53,6 +54,7 @@ public class Measurements extends AppCompatActivity implements View.OnClickListe
     int CONDUCTANCE_BLANK = 19;
     int TURBIDITY_OOR = 23;
     int TURBIDITY_BLANK = 29;
+    int FIELDNITRATE_OOR = 31;
 
 
     double oxygen_min = 6;
@@ -65,6 +67,8 @@ public class Measurements extends AppCompatActivity implements View.OnClickListe
     double conductance_max = 800;
     double turbidity_min = 0;
     double turbidity_max = 400;
+    double fieldnitrate_min = 0;
+    double fieldnitrate_max = 50;
 
     boolean warned = false;
 
@@ -88,6 +92,7 @@ public class Measurements extends AppCompatActivity implements View.OnClickListe
         ph = this.findViewById(R.id.ph);
         conductance = this.findViewById(R.id.conductance);
         turbidity = this.findViewById(R.id.turbidity);
+        fieldnitrate = this.findViewById(R.id.fieldnitrate);
 
         btn_next.setOnClickListener(this);
     }
@@ -151,6 +156,9 @@ public class Measurements extends AppCompatActivity implements View.OnClickListe
         }
         if (OOR(turbidity, turbidity_min, turbidity_max)) {
             valid *= TURBIDITY_OOR;
+        }
+        if (OOR(fieldnitrate,fieldnitrate_min,fieldnitrate_max)) {
+            valid *= FIELDNITRATE_OOR;
         }
 
         return valid;
@@ -285,6 +293,13 @@ public class Measurements extends AppCompatActivity implements View.OnClickListe
                 ll.addView(txt10);
                 turbidity.setTextColor(Color.RED);
             }
+            if (num % FIELDNITRATE_OOR == 0){
+                TextView txt11 = new TextView(this);
+                txt11.setText("-Field Nitrate value out of normal range");
+                txt11.setTextSize(20);
+                ll.addView(txt11);
+                fieldnitrate.setTextColor(Color.RED);
+            }
         }
 
         ll_main.addView(ll);
@@ -313,6 +328,7 @@ public class Measurements extends AppCompatActivity implements View.OnClickListe
         e.putString("ph", ph.getText().toString());
         e.putString("conductance", conductance.getText().toString());
         e.putString("turbidity", turbidity.getText().toString());
+        e.putString("fieldnitrate",fieldnitrate.getText().toString());
 
         e.commit();
 

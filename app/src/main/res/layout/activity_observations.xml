@@ -38,9 +38,21 @@
         android:id="@+id/CB_Debris"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Derbis"
+        android:text="Debris"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="158dp" />
+
+    <CheckBox
+        android:id="@+id/CB_Cattle_Upstream"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cattle Upstream" />
+
+    <CheckBox
+        android:id="@+id/CB_Recent_Rain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recent Rain" />
 
     <TextView
         android:id="@+id/textView"
@@ -89,5 +101,11 @@
         android:text="Sample 3 Labeled? "
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="449dp" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="If you are not collecting 3 samples, mark that you have labeled 3 to continue" />
 
 </LinearLayout>

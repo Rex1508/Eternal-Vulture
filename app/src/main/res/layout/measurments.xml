@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Measurment Method"
+        android:textSize="18sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="337dp" />
@@ -45,6 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Measurments"
+        android:textSize="18sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp" />
@@ -181,6 +183,29 @@
             android:textAlignment="center"
             tools:layout_editor_absoluteX="126dp"
             tools:layout_editor_absoluteY="265dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Field Nitrate" />
+
+        <EditText
+            android:id="@+id/fieldnitrate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="mg/L"
+            android:inputType="numberSigned|numberDecimal"
+            android:textAlignment="center" />
     </LinearLayout>
 
     <Button

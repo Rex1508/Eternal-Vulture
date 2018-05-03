@@ -59,6 +59,8 @@ public class Observations extends AppCompatActivity implements View.OnClickListe
     CheckBox highwater;
     CheckBox lowwater;
     CheckBox debris;
+    CheckBox cattleupstream;
+    CheckBox recentrain;
     CheckBox sample1;
     CheckBox sample2;
     CheckBox sample3;
@@ -84,6 +86,8 @@ public class Observations extends AppCompatActivity implements View.OnClickListe
         highwater = this.findViewById(R.id.CB_High_Water);
         lowwater = this.findViewById(R.id.CB_Low_Water);
         debris = this.findViewById(R.id.CB_Debris);
+        cattleupstream = this.findViewById(R.id.CB_Cattle_Upstream);
+        recentrain = this.findViewById(R.id.CB_Recent_Rain);
         sample1 = this.findViewById(R.id.CB_Sample1);
         sample2 = this.findViewById(R.id.CB_Sample2);
         sample3 = this.findViewById(R.id.CB_Sample3);
@@ -157,11 +161,15 @@ public class Observations extends AppCompatActivity implements View.OnClickListe
                 fos.write(",".getBytes());
                 fos.write(s.getString("turbidity","NOT_FOUND").getBytes());
                 fos.write(",".getBytes());
+                fos.write(s.getString("fieldnitrate", "NOT_FOUND").getBytes());
+                fos.write(",".getBytes());
 
 
                 if (highwater.isChecked()){fos.write("High water ".getBytes());}
                 if (lowwater.isChecked()){fos.write("Low water ".getBytes());}
                 if (debris.isChecked()){fos.write("Debris ".getBytes());}
+                if (cattleupstream.isChecked()){fos.write("Cattle Upstream ".getBytes());}
+                if (recentrain.isChecked()){fos.write("Recent Rain ".getBytes());}
                 fos.write(",".getBytes());
 
 

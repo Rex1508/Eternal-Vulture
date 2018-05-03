@@ -212,9 +212,13 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         space.setText(" ");
         ll_main.addView(space);
 
-        TextView warning = new TextView(this);
-        warning.setText("WARNING: Data will be erased from this device after being sent");
-        ll_main.addView(warning);
+        TextView warning1 = new TextView(this);
+        warning1.setText("WARNING: Make sure you are connected to internet before trying to send");
+        ll_main.addView(warning1);
+
+        TextView warning2 = new TextView(this);
+        warning2.setText("WARNING: Data must be manually erased after being sent to Google Sheets. Erase data only after it has been successfully transferred to database.");
+        ll_main.addView(warning2);
 
         Button send = new Button(this);
         send.setText("SEND");
@@ -269,6 +273,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         TextView txt = new TextView(this);
         txt.setText("This operation cannot be undone");
         ll_main.addView(txt);
+
+        TextView txt2 = new TextView(this);
+        txt2.setText("Only delete data once you are certain it has successfully been put into the database");
+        ll_main.addView(txt2);
 
         Button erase = new Button(this);
         erase.setText("ERASE DATA ON DEVICE");
