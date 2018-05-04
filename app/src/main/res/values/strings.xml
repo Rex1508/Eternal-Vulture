@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Water Quality Research Assistant</string>
+    <string name="title_activity_documentation">Documentation</string>
 </resources>

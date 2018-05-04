@@ -132,7 +132,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
                 break;
 
             case R.id.btn_Documentation:
+
+                Intent j = new Intent(Home.this, Documentation.class); // prepare the next activity to be opened
+                startActivity(j); //start next activity
                 break;
+
 
 
 
